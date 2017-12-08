@@ -17,6 +17,5 @@ public class JSONFormater extends AnAction {
 
         DialogWrapper dialog = new JSONViewer();
         dialog.show();
-        dialog.setSize(800,600);
     }
 }
