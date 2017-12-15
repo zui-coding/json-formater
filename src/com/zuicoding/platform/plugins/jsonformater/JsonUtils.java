@@ -10,7 +10,7 @@ public class JsonUtils {
     private JsonUtils(){}
     private static void addIndentBlank(StringBuilder sb, int indent) {
         for (int i = 0; i < indent; i++) {
-            sb.append('\t');
+            sb.append("&nbsp;&nbsp;&nbsp;&nbsp;");
         }
     }
     public static String formatJson(String json){
@@ -34,7 +34,7 @@ public class JsonUtils {
                 case '[':
                     sb.append(current);
                     if (!isInQuotationMarks) {
-                        sb.append('\n');
+                        sb.append("<br/>");
                         indent++;
                         addIndentBlank(sb, indent);
                     }
@@ -42,7 +42,7 @@ public class JsonUtils {
                 case '}':
                 case ']':
                     if (!isInQuotationMarks) {
-                        sb.append('\n');
+                        sb.append("<br/>");
                         indent--;
                         addIndentBlank(sb, indent);
                     }
@@ -51,7 +51,7 @@ public class JsonUtils {
                 case ',':
                     sb.append(current);
                     if (last != '\\' && !isInQuotationMarks) {
-                        sb.append('\n');
+                        sb.append("<br/>");
                         addIndentBlank(sb, indent);
                     }
                     break;
@@ -62,5 +62,11 @@ public class JsonUtils {
 
         return sb.toString();
     }
+
+    public static boolean isBank(String str){
+
+        return str == null || str.trim().isEmpty();
+    }
+
 
 }
